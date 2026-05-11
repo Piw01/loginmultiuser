@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     public function showLogin()
     {
-        return view('auth.Login');
+        return view('auth.login');
     }
 
     public function login(Request $request)
@@ -33,14 +33,12 @@ class LoginController extends Controller
                 return redirect()->route('kasir.dashboard');
             }
         }
-        
-        // Jika login gagal
+
         return back()->withErrors([
             'email' => 'Email atau password salah.',
         ])->onlyInput('email');
     }
-    
-    // (Tambahan sesuai Alur Flowchart)
+
     public function logout(Request $request)
     {
         Auth::logout();
